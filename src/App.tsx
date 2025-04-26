@@ -1,5 +1,8 @@
-import './App.css'
-import { Button } from "@/components/ui/button"
+import './App.css';
+// import { Button } from "@/components/ui/button";
+import {BrowserRouter} from "react-router-dom";
+import Layout from './components/ui/layout';
+import { ThemeProvider } from './context/theme-provider';
 
 function App() {
 
@@ -7,7 +10,11 @@ function App() {
   return (
     
     <div>
-      <Button>Click me</Button>
+      <BrowserRouter>
+      <ThemeProvider defaultTheme='dark'>
+      <Layout>Hello</Layout>
+      </ThemeProvider>
+      </BrowserRouter>
     </div>
   )
 }
