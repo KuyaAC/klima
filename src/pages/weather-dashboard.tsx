@@ -1,10 +1,11 @@
 import { Button } from "@/components/ui/button";
+import { useGeolocation } from "@/hooks/use-geolocation";
 import { RefreshCw } from "lucide-react";
 
 const WeatherDashboard = () => {
+const { coordinates, error, getLocation, isLoading} = useGeolocation();
 
-  
-
+  console.log(coordinates);
 
   return (
     <div className="space-y-4">
