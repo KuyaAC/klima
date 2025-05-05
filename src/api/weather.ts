@@ -6,7 +6,7 @@ class WeatherAPI{
         endpoint: string,
         params: Record<string, string | number>
     ) {
-        cont searchParams = new URLSearchParams({
+        const searchParams = new URLSearchParams({
             appid: API_CONFIG.API_KEY,
             ...params,
         });
