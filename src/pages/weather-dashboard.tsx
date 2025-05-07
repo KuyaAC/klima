@@ -1,5 +1,6 @@
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
+import CurrentWeather from "@/components/ui/current-weather";
 import WeatherSkeleton from "@/components/ui/loading-skeleton";
 import { useGeolocation } from "@/hooks/use-geolocation";
 import { useForecastQuery, useReverseGeocodeQuery, useWeatherQuery } from "@/hooks/use-weather";
@@ -99,10 +100,13 @@ const { coordinates, error: locationError, getLocation, isLoading: locationLoadi
 
       {/* Current and Hourly Weather */}
 
-      <div>
+      <div className="grid gap-6">
           <div>
             {/* current weather */}
+            <CurrentWeather data={weatherQuery.data} locationName={locationName} />
+            
             {/* hour temperature */}
+            
           </div>
 
           <div>
