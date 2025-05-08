@@ -126,7 +126,7 @@ const WeatherDashboard = () => {
           <HourlyTemperature data={forecastQuery.data} />
         </div>
 
-        <div>
+        <div className="grid gap-6 md:grid-cols-2 items-start">
           {/* details  */}
           <WeatherDetails data={weatherQuery.data} />
           {/* forecast  */}
