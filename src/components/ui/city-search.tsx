@@ -40,7 +40,7 @@ const CitySearch = () => {
           {query.length > 2 && !isLoading && (
             <CommandEmpty>No Cities found.</CommandEmpty>
           )}
-          <CommandGroup heading="Suggestion">
+          <CommandGroup heading="Favorites">
             <CommandItem>Calendar</CommandItem>
             <CommandItem>Emoji</CommandItem>
             <CommandItem>Calculator</CommandItem>
