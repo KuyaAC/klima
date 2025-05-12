@@ -19,7 +19,7 @@ const Header = () => {
           />
         </Link>
 
-        <div>
+        <div className="flex gap-4">
           {/* search */}
 
           <CitySearch />

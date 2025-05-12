@@ -9,10 +9,15 @@ import {
   CommandList,
 } from "./command";
 import { Search } from "lucide-react";
+import { useLocationSearch } from "@/hooks/use-weather";
 
 const CitySearch = () => {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
+
+  const { data: locations, isLoading } = useLocationSearch(query);
+
+  console.log(locations);
 
   return (
     <>
@@ -26,9 +31,15 @@ const CitySearch = () => {
       </Button>
 
       <CommandDialog open={open} onOpenChange={setOpen}>
-        <CommandInput placeholder="Type a command or search..." />
+        <CommandInput
+          placeholder="Type a command or search..."
+          value={query}
+          onValueChange={setQuery}
+        />
         <CommandList>
-          <CommandEmpty>No Result found.</CommandEmpty>
+          {query.length > 2 && !isLoading && (
+            <CommandEmpty>No Cities found.</CommandEmpty>
+          )}
           <CommandGroup heading="Suggestion">
             <CommandItem>Calendar</CommandItem>
             <CommandItem>Emoji</CommandItem>
