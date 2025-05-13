@@ -7,8 +7,9 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
+  CommandSeparator,
 } from "./command";
-import { Search } from "lucide-react";
+import { Loader2, Search } from "lucide-react";
 import { useLocationSearch } from "@/hooks/use-weather";
 
 const CitySearch = () => {
@@ -16,6 +17,8 @@ const CitySearch = () => {
   const [query, setQuery] = useState("");
 
   const { data: locations, isLoading } = useLocationSearch(query);
+
+  const handleSelect = () => {};
 
   console.log(locations);
 
@@ -42,9 +45,43 @@ const CitySearch = () => {
           )}
           <CommandGroup heading="Favorites">
             <CommandItem>Calendar</CommandItem>
-            <CommandItem>Emoji</CommandItem>
-            <CommandItem>Calculator</CommandItem>
           </CommandGroup>
+
+          <CommandSeparator />
+
+          <CommandGroup heading="Recent Searches">
+            <CommandItem>Calendar</CommandItem>
+          </CommandGroup>
+
+          <CommandSeparator />
+
+          {locations && locations.length > 0 && (
+            <CommandGroup heading="Suggestions">
+              {isLoading && (
+                <div className="flex items-center justify-center p-4">
+                  <Loader2 className="h-4 w-4 animate-spin" />
+                </div>
+              )}
+              {locations?.map((location) => (
+                <CommandItem
+                  key={`${location.lat}-${location.lon}`}
+                  value={`${location.lat}|${location.lon}|${location.name}|${location.country}`}
+                  onSelect={handleSelect}
+                >
+                  <Search className="mr-2 h-4 w-4" />
+                  <span>{location.name}</span>
+                  {location.state && (
+                    <span className="text-sm text-muted-foreground">
+                      , {location.state}
+                    </span>
+                  )}
+                  <span className="text-sm text-muted-foreground">
+                    , {location.country}
+                  </span>
+                </CommandItem>
+              ))}
+            </CommandGroup>
+          )}
         </CommandList>
       </CommandDialog>
     </>
