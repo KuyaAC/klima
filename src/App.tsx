@@ -1,18 +1,19 @@
-import './App.css';
+import "./App.css";
 // import { Button } from "@/components/ui/button";
-import {BrowserRouter, Route, Routes} from "react-router-dom";
-import Layout from './components/ui/layout';
-import { ThemeProvider } from './context/theme-provider';
-import WeatherDashboard from './pages/weather-dashboard';
-import CityPage from './pages/city-page';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Layout from "./components/ui/layout";
+import { ThemeProvider } from "./context/theme-provider";
+import WeatherDashboard from "./pages/weather-dashboard";
+import CityPage from "./pages/city-page";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { Toaster } from "sonner";
 
 const queryClient = new QueryClient({
-  defaultOptions:{
+  defaultOptions: {
     queries: {
       staleTime: 5 * 60 * 1000, // 5 mins
-      gcTime: 10 * 60 *1000, // 10 mins
+      gcTime: 10 * 60 * 1000, // 10 mins
       retry: false,
       refetchOnWindowFocus: false,
     },
@@ -20,19 +21,18 @@ const queryClient = new QueryClient({
 });
 
 function App() {
-
-
   return (
     <div>
       <QueryClientProvider client={queryClient}>
         <BrowserRouter>
-          <ThemeProvider defaultTheme='dark'>
+          <ThemeProvider defaultTheme="dark">
             <Layout>
               <Routes>
-                <Route path='/' element={<WeatherDashboard />} />
-                <Route path='/city/:cityName' element={<CityPage />} />
+                <Route path="/" element={<WeatherDashboard />} />
+                <Route path="/city/:cityName" element={<CityPage />} />
               </Routes>
             </Layout>
+            <Toaster richColors />
           </ThemeProvider>
         </BrowserRouter>
         <ReactQueryDevtools initialIsOpen={false} />
@@ -41,6 +41,4 @@ function App() {
   );
 }
 
-export default App
-
-
+export default App;
