@@ -5,6 +5,7 @@ import HourlyTemperature from "@/components/ui/hourly-temperature";
 import WeatherSkeleton from "@/components/ui/loading-skeleton";
 import WeatherDetails from "@/components/ui/weather-details";
 import WeatherForecast from "@/components/ui/weather-forecast";
+import WebInformation from "@/components/ui/web-info";
 import { useWeatherQuery, useForecastQuery } from "@/hooks/use-weather";
 import { AlertTriangle } from "lucide-react";
 import { useParams, useSearchParams } from "react-router-dom";
@@ -56,6 +57,9 @@ const CityPage = () => {
           <WeatherForecast data={forecastQuery.data} />
           <WeatherDetails data={weatherQuery.data} />
         </div>
+      </div>
+      <div className="gap-10">
+        <WebInformation />
       </div>
     </div>
   );

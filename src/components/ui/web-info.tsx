@@ -1,18 +1,14 @@
-import { useTheme } from "@/context/theme-provider";
 import { Link } from "react-router-dom";
 
 const WebInformation = () => {
-  const { theme } = useTheme();
-  const isDark = theme === "dark";
-
   return (
-    <div className="">
-      <h1 className="text-4xl font-bold tracking-tight pb-5 pt-10 text-center">
-        About
-      </h1>
+    <div className="pt-12">
       <div className="flex flex-col lg:flex-row gap-4">
         <div className="text-justify indent-8 ">
-          <p className="pt-8 pb-2">
+          <h1 className="text-4xl font-bold tracking-tight pb-5 pt-10 text-center">
+            About
+          </h1>
+          <p className="pb-2">
             <span className="font-bold text-xl">Klima</span> is a sleek and
             modern weather web application built with{" "}
             <span className="font-bold">ReactJS</span>, designed to provide
@@ -31,20 +27,18 @@ const WebInformation = () => {
             <span className="font-bold">TanStack Query</span> is used under the
             hood. Weather trends and statistics are visualized using{" "}
             <span className="font-bold">Recharts</span>, offering users
-            interactive and insightful data representations.
-          </p>
-          <p className="pb-2">
-            Whether you're checking today's forecast or exploring weather
-            trends, Klima offers a fast, elegant, and informative experience.
+            interactive and insightful data representations.Whether you're
+            checking today's forecast or exploring weather trends, Klima offers
+            a fast, elegant, and informative experience.
           </p>
         </div>
         <div>
           <Link to={"/"}>
             <img
               // Change the icon based on the theme
-              src={isDark ? "/klima-logo.png" : "/klima-logo2.png"}
-              alt="Klima Logo"
-              className="h-80 w-420"
+              src="/weather.jpg"
+              alt="Weather Image"
+              className="h-100 w-1120 rounded-lg"
             />
           </Link>
         </div>
