@@ -5,7 +5,7 @@ const WebInformation = () => {
     <div className="pt-12">
       <div className="flex flex-col lg:flex-row gap-4">
         <div className="text-justify indent-8 ">
-          <h1 className="text-4xl font-bold tracking-tight pb-5 pt-10 text-center">
+          <h1 className="text-4xl font-bold tracking-tight pb-5 pt-9 text-center">
             About
           </h1>
           <p className="pb-2">
